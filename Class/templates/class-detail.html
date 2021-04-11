@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% for school in object_list %}
+    {% block title %}{{ school.name }}{% endblock %}
+    {% block content %}
+        <h1>{{ school.name }}</h1>
+        <h4>Address: {{ school.address }}</h4>
+        <h4>Phone: {{ school.phone }}</h4>
+        <button type="button" onclick="location.href='update/'" class="btn btn-outline-primary">Edit Details</button>
+        <button type="button" onclick="location.href='delete/'" class="btn btn-outline-danger">Delete School</button>
+    {% endblock %}
+{% endfor %}

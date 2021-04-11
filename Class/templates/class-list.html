@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Class List{% endblock %}
+
+{% block content %}
+    <ol>
+        {% for school in schools %}
+            <li>
+                <h2>{{school.name}}</h2>
+                <button type="button" onclick="location.href='{% url 'class-create' %}'" class="btn btn-outline-success">Add class</button>
+                {% for class in school.class_set.all %}
+                <ul>
+                    <li>
+                        <h5>{{class.name}} || room no: {{class.room_no}}</h5>
+                        <button type="button" onclick="location.href='{% url 'class-update' pk=class.id %}'" class="btn btn-outline-primary">Edit class</button>
+                        <button type="button" onclick="location.href='{% url 'class-delete' pk=class.id %}'" class="btn btn-outline-danger">Delete Class</button>
+                    </li>
+                </ul>
+                {% endfor %}
+            </li>
+            <br>
+        {% endfor %}
+    </ol>
+    <center><button type="button" onclick="location.href='{% url 'school-list' %}'" class="btn btn-outline-primary">Back to school</button></center>
+    <br><br><center><button type="button" onclick="location.href='{% url 'student-list' %}'" class="btn btn-outline-primary">See Students</button></center>
+    <br><br>
+{% endblock %}

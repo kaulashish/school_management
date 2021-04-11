@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Student List{% endblock %}
+
+{% block content %}
+    <h1>Student List: </h1><br>
+    <ul>
+        {% for student in object_list %}
+            <li>
+                <a href="{% url 'student-detail' pk=student.id %}" class="link-primary">{{student.name}}</a>
+            </li>
+            <br>
+        {% endfor %}
+    </ul>
+    <button type="button" onclick="location.href='{% url 'student-create' %}'" class="btn btn-outline-primary">Add Students</button>
+    <button type="button" onclick="location.href='{% url 'school-list' %}'" class="btn btn-outline-primary">Back to School</button>
+    <br><br><button type="button" onclick="location.href='{% url 'class-list' %}'" class="btn btn-outline-primary">See Classes</button>
+    <br><br>
+{% endblock %}

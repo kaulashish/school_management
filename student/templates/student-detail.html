@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}{{student.name}}'s Details{% endblock %}
+
+{% block content %}
+    <h1>{{student.name}}'s Details: </h1>
+    <ul>
+        <li>Age: {{ student.age }}</li>
+        <li>School: {{ student.school }}</li>
+        <li>Class: {{student.class_name}}</li>
+        <li>Roll no: {{ student.roll_no }}</li>
+        <li>Marks: {{ student.marks }}/100</li>
+    </ul>
+    <button type="button" onclick="location.href='{% url 'student-update' student.id %}'" class="btn btn-outline-primary">Edit Student Data</button>
+    <button type="button" onclick="location.href='{% url 'student-del' student.id %}'" class="btn btn-outline-danger">Delete Student Data</button><br><br>
+    <center>
+        <button type="button" onclick="location.href='{% url 'class-list' %}'" class="btn btn-outline-primary">Go to class</button>
+    </center>
+    <center>
+        <button type="button" onclick="location.href='{% url 'school-list' %}'" class="btn btn-outline-primary">Back to school</button>
+    </center>
+{% endblock %}
